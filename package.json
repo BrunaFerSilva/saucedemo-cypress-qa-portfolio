@@ -1,0 +1,19 @@
+{
+  "name": "saucedemo-cypress-qa-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint cypress --ext .js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^15.18.1",
+    "eslint": "^10.7.0",
+    "eslint-plugin-cypress": "^6.4.3"
+  }
+}
