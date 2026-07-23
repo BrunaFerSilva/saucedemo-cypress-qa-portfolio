@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "lint": "eslint cypress --ext .js",
-  "cy:open": "cypress open",
-  "cy:run": "cypress run"
-  
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint cypress --ext .js",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:api": "vitest run api-tests"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,8 @@
   "devDependencies": {
     "cypress": "^15.18.1",
     "eslint": "^10.7.0",
-    "eslint-plugin-cypress": "^6.4.3"
+    "eslint-plugin-cypress": "^6.4.3",
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.10"
   }
 }
