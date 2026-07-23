@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import request from 'supertest'
+import { Chance } from 'chance'
 
 const baseUrl = 'https://jsonplaceholder.typicode.com'
+const chance = new Chance()
 
 describe('Posts API', () => {
   it('returns comments for a specific post', async () => {
@@ -19,9 +21,9 @@ describe('Posts API', () => {
 
   it('creates a new post', async () => {
     const newPost = {
-      title: 'Meu primeiro post de teste',
-      body: 'Conteúdo de exemplo para o teste de API',
-      userId: 1
+      title: chance.sentence({ words: 5 }),
+      body: chance.paragraph({ sentences: 2 }),
+      userId: chance.integer({ min: 1, max: 10 })
     }
 
     const response = await request(baseUrl)
@@ -36,7 +38,7 @@ describe('Posts API', () => {
 
   it('updates an existing post', async () => {
     const updates = {
-      title: 'Título atualizado via PATCH'
+      title: chance.sentence({ words: 4 })
     }
 
     const response = await request(baseUrl)
@@ -56,7 +58,7 @@ describe('Posts API', () => {
 
   it('handles a post creation with missing fields', async () => {
     const incompletePost = {
-      title: 'Post sem userId'
+      title: chance.sentence({ words: 3 })
     }
 
     const response = await request(baseUrl)

@@ -2,6 +2,9 @@ import LoginPage from '../pageObjects/LoginPage'
 import InventoryPage from '../pageObjects/InventoryPage'
 import CartPage from '../pageObjects/CartPage'
 import CheckOutPage from '../pageObjects/CheckOutPage'
+import Chance from 'chance'
+
+const chance = new Chance()
 
 describe('Checkout', () => {
     let users
@@ -22,14 +25,14 @@ describe('Checkout', () => {
     })
 
     it('proceeds to the next step after filling required information', () => {
-        CheckOutPage.fillInformation('John', 'Doe', '12345')
+        CheckOutPage.fillInformation(chance.first(), chance.last(), chance.zip())
         CheckOutPage.clickContinue()
 
         cy.url().should('include', '/checkout-step-two.html')
     })
 
     it('calculates the total correctly based on item price and tax', () => {
-        CheckOutPage.fillInformation('John', 'Doe', '12345')
+        CheckOutPage.fillInformation(chance.first(), chance.last(), chance.zip())
         CheckOutPage.clickContinue()
 
         CheckOutPage.getSubtotal().then(($subtotal) => {
@@ -47,7 +50,7 @@ describe('Checkout', () => {
   })
 })
     it('completes the purchase successfully', () => {
-        CheckOutPage.fillInformation('John', 'Doe', '12345')
+        CheckOutPage.fillInformation(chance.first(), chance.last(), chance.zip())
         CheckOutPage.clickContinue()
         CheckOutPage.clickFinish()
 
